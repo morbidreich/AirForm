@@ -20,6 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	MyAuthenticationSuccesfullHandler myAuthSuccesHandler;
 
+	@Autowired
+	MyAuthhenticationFailureHandler myAuthFailureHandler;
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -83,7 +86,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				  .antMatchers("/applicant").hasAnyRole("APPLICANT", "EMPLOYEE", "ADMIN")
 				  .antMatchers("/").permitAll()
 				  .antMatchers("/h2-console").permitAll()
-				  .and().formLogin().successHandler(myAuthSuccesHandler);
+				  .and()
+				  .formLogin()
+				  .successHandler(myAuthSuccesHandler)
+				  .failureHandler(myAuthFailureHandler);
+
 
 		//this is to enable h2 in memory console acces during runtime
 		http.csrf().disable();
