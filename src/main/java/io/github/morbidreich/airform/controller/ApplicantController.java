@@ -9,4 +9,9 @@ public class ApplicantController {
 	public String applicantHomepage() {
 		return "applicant-home.html";
 	}
+
+	@GetMapping("/applicant-form")
+	public String applicantForm() {
+		return "applicant-form.html";
+	}
 }

@@ -3,8 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Applicant homepage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<H1>Applicant homepage</H1>
+<div class="container">
+    <div class="row" style="height: 30px"></div>
+    <div class="row">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2"><a href="/logout">wyloguj</a></div>
+    </div>
+    <div class="row" style="height: 30px"></div>
+    <div class="row">
+        <div class="col-sm-12" style="text-align: center"><h3>Witaj w managerze wniosków, co chcesz zrobić?</h3></div>
+    </div>
+    <div class="row" style="height: 30px"></div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3 d-flex align-items-stretch">
+            <div class="card">
+                <img class="card-img-top"
+                     src="https://img3.goodfon.com/wallpaper/nbig/6/10/kupol-meteozond-aerostat.jpg"
+                     alt="wniosek - sondowanie atmosfery" height="200px">
+                <div class="card-body">
+                    <h5 class="card-title">Sondowanie atmosfery</h5>
+                    <p class="card-text"></p>
+                    <a href="/probing-form" class="btn btn-primary btn-lg">Złóż wniosek</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 d-flex align-items-stretch">
+            <div class="card">
+                <img class="card-img-top"
+                     src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fpaulmsutter%2Ffiles%2F2019%2F02%2Flightshow-2223124_1920-1200x675.jpg"
+                     alt="wniosek - lasery" height="200px">
+                <div class="card-body">
+                    <h5 class="card-title">Pokaz laserów</h5>
+                    <p class="card-text">Jeszcze niedostępne!</p>
+                    <a href="/lasers-form" class="btn btn-primary btn-secondary btn-lg disabled">Złóż wniosek</a>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-sm-3 d-flex align-items-stretch">
+            <div class="card">
+                <img class="card-img-top"
+                     src="https://i.pinimg.com/originals/e8/4d/9e/e84d9ea01670bf98a1c624611c668e0b.jpg"
+                     alt="wniosek - lampiony" height="200px">
+                <div class="card-body">
+                    <h5 class="card-title">Lampiony</h5>
+                    <p class="card-text">Jeszcze niedostępne!</p>
+                    <a href="/lanterns-form" class="btn btn-primary btn-secondary btn-lg disabled" role="button"
+                       aria-disabled="true">Złóż wniosek</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row" style="height: 70px"></div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+            <a href="/applicant-form" class="btn btn-primary" style="width: 100%">Edytuj dane konta</a>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+            <a href="/user-applications" class="btn btn-primary" style="width: 100%">Wyświetl moje wnioski</a>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
 </body>
 </html>
