@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User Details</title>
+</head>
+<body>
+
+<form th:action="@{/user-details-save}" th:object="${userDetails}" method="post">
+    <input type="hidden" th:field="*{id}">
+
+    <div>
+        <label>name</label>
+        <input type="text" th:field="*{name}">
+    </div>
+    <div>
+        <label>surname</label>
+        <input type="text" th:field="*{surname}">
+    </div>
+    <div>
+        <label>adress</label>
+        <input type="text" th:field="*{adress}">
+    </div>
+    <div>
+        <label>phone</label>
+        <input type="number" th:field="*{phone}">
+    </div>
+    <div>
+        <input type="submit" value="zapisz">
+    </div>
+</form>
+</body>
+</html>

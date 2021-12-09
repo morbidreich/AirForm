@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,6 +21,8 @@ public class User {
 	private boolean active;
 	private String roles;
 	private LocalDateTime created;
+	@OneToOne
+	private UserDetails userDetails;
 
 	public User(String userName, String password, String email, boolean active, String roles) {
 		this.userName = userName;

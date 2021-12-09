@@ -47,8 +47,6 @@ public class MyAuthenticationSuccesfullHandler implements AuthenticationSuccessH
 		if (authentication.getPrincipal() instanceof UserDetails) {
 			UserDetails ud = (UserDetails) authentication.getPrincipal();
 
-			userOpt = userRepo.findByUserName(ud.getUsername());
-			userOpt.ifPresent(user -> System.out.println(user.getId()));
 
 			roleToUrlMap.put("ROLE_ADMIN", "/admin");
 			roleToUrlMap.put("ROLE_EMPLOYEE", "/employee");
@@ -57,10 +55,9 @@ public class MyAuthenticationSuccesfullHandler implements AuthenticationSuccessH
 			for (GrantedAuthority grantedAuthority : authorities) {
 				String roleName = grantedAuthority.getAuthority();
 				if (roleToUrlMap.containsKey(roleName))
-					return roleToUrlMap.get(roleName) + "/" + userOpt.get().getId();
+					return roleToUrlMap.get(roleName);
 			}
 		}
-
 
 		throw new IllegalStateException();
 	}
