@@ -83,13 +83,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				  .antMatchers("/admin").hasRole("ADMIN")
 				  .antMatchers("/employee").hasAnyRole("EMPLOYEE", "ADMIN")
-				  .antMatchers("/applicant").hasAnyRole("APPLICANT", "EMPLOYEE", "ADMIN")
+				  .antMatchers("/applicant/**").hasAnyRole("APPLICANT", "EMPLOYEE", "ADMIN")
 				  .antMatchers("/").permitAll()
 				  .antMatchers("/h2-console").permitAll()
 				  .and()
 				  .formLogin()
 				  .successHandler(myAuthSuccesHandler)
 				  .failureHandler(myAuthFailureHandler);
+
+		http.logout()
+				  .logoutSuccessUrl("/");
+
 
 
 		//this is to enable h2 in memory console acces during runtime

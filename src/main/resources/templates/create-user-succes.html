@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Succesfully created user</title>
+</head>
+<body>
+<p>
+Twoje konto zostało utworzone poprawnie. Musisz jednak poczekać,<br>aż zostanie ono aktywowane przez administratora.</p>
+<p><a href="/">Powrót na stronę główną</a></p>
+<br><br><br><br><br><br><br><br>
+<p>...pssst! to jeszcze wersja proof-of-concept! nie ma żadnego admina! </p>
+<p><a th:href="|/cheat-activation?id=${id}|">kliknij aby samodzielnie aktywować swoje konto</a></p>
+</body>
+</html>

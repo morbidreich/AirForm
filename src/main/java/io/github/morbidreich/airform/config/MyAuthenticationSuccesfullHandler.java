@@ -1,7 +1,11 @@
 package io.github.morbidreich.airform.config;
 
+import io.github.morbidreich.airform.entity.User;
+import io.github.morbidreich.airform.repository.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -14,9 +18,13 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class MyAuthenticationSuccesfullHandler implements AuthenticationSuccessHandler {
+
+	@Autowired
+	UserRepo userRepo;
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
@@ -27,25 +35,33 @@ public class MyAuthenticationSuccesfullHandler implements AuthenticationSuccessH
 			   Authentication authentication) throws IOException, ServletException {
 
 		String redirectUrl = determineRedirectUrl(authentication);
-
 		redirectStrategy.sendRedirect(request, response, redirectUrl);
-
 	}
 
 	private String determineRedirectUrl(Authentication authentication) {
+		Optional<User> userOpt;
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
 		Map<String, String> roleToUrlMap = new HashMap<>();
 
-		roleToUrlMap.put("ROLE_ADMIN", "/admin");
-		roleToUrlMap.put("ROLE_EMPLOYEE", "/employee");
-		roleToUrlMap.put("ROLE_APPLICANT", "/applicant");
+		if (authentication.getPrincipal() instanceof UserDetails) {
+			UserDetails ud = (UserDetails) authentication.getPrincipal();
 
-		for (GrantedAuthority grantedAuthority : authorities) {
-			 String roleName = grantedAuthority.getAuthority();
-			 if (roleToUrlMap.containsKey(roleName))
-				 return roleToUrlMap.get(roleName);
+			userOpt = userRepo.findByUserName(ud.getUsername());
+			userOpt.ifPresent(user -> System.out.println(user.getId()));
+
+			roleToUrlMap.put("ROLE_ADMIN", "/admin");
+			roleToUrlMap.put("ROLE_EMPLOYEE", "/employee");
+			roleToUrlMap.put("ROLE_APPLICANT", "/applicant");
+
+			for (GrantedAuthority grantedAuthority : authorities) {
+				String roleName = grantedAuthority.getAuthority();
+				if (roleToUrlMap.containsKey(roleName))
+					return roleToUrlMap.get(roleName) + "/" + userOpt.get().getId();
+			}
 		}
+
+
 		throw new IllegalStateException();
 	}
 }

@@ -19,6 +19,9 @@ public class MyAuthhenticationFailureHandler implements AuthenticationFailureHan
 			  HttpServletResponse response,
 			  AuthenticationException exception) throws IOException, ServletException {
 
+		System.out.println(exception);
+
+
 		RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 		redirectStrategy.sendRedirect(request, response, "/loginfailed");
 
