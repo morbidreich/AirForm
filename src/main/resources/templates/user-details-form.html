@@ -7,6 +7,7 @@
 <body>
 
 <form th:action="@{/user-details-save}" th:object="${userDetails}" method="post">
+
     <input type="hidden" th:field="*{id}">
 
     <div>
@@ -28,6 +29,7 @@
     <div>
         <input type="submit" value="zapisz">
     </div>
+    <div><a href="/applicant">powrót</a></div>
 </form>
 </body>
 </html>
