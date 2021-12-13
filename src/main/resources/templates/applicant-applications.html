@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>My applications</title>
+    <title>Złożone wnioski</title>
 </head>
 <body>
-User submitted applications placeholder
+Liczba złożonych wniosków: <span th:text="${probingFormList.size()}">liczba</span>
 </body>
 </html>

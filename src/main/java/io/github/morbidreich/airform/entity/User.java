@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Entity
 @NoArgsConstructor
@@ -13,9 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private String userName;
+	private String username;
 	private String password;
 	private String email;
 	private boolean active;
@@ -24,12 +23,15 @@ public class User {
 	@OneToOne
 	private UserDetails userDetails;
 
-	public User(String userName, String password, String email, boolean active, String roles) {
-		this.userName = userName;
+	public User(String username, String password, String email, boolean active, String roles) {
+		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.active = active;
 		this.roles = roles;
 		created = LocalDateTime.now();
+	}
+	public Optional<UserDetails> getUserDetailsOpt() {
+		return Optional.ofNullable(userDetails);
 	}
 }

@@ -7,14 +7,13 @@ import io.github.morbidreich.airform.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/user")
 public class UserDetailsController {
 
 	private UserService userService;
@@ -23,10 +22,11 @@ public class UserDetailsController {
 		this.userService = userService;
 	}
 
-	@GetMapping("/user-details")
-	public String editUserDetails(Authentication authentication, Model model) {
+	@GetMapping("/details")
+	public String editUserDetails(Principal principal, Model model) {
 
-		Optional<User> user = userService.getUser(authentication.getName());
+
+		Optional<User> user = userService.getUser(principal.getName());
 
 		if (user.isPresent()) {
 			User u = user.get();
@@ -35,20 +35,23 @@ public class UserDetailsController {
 			model.addAttribute("userDetails", userDetails);
 			return "user-details-form";
 		}
-		else
-			return "error";
-
-
+		return "error";
 	}
 
-	@PostMapping("/user-details-save")
+	@PostMapping("/save-details")
 	public String saveUserDetails(Authentication authentication, @ModelAttribute UserDetails ud) {
 
-		System.out.println(ud.toString());
-		userService.updateUserDetails(authentication.getName(), ud);
-
+			System.out.println(ud.toString());
+			userService.updateUserDetails(authentication.getName(), ud);
 		// TODO for now it will work only for applicants
 		return "redirect:/applicant";
+	}
+
+	@GetMapping("/email-password")
+	public String editEmailPassword(Model model, Principal principal) {
+
+
+		return "email-password-form";
 	}
 
 }

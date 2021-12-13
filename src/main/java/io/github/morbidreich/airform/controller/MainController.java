@@ -22,9 +22,4 @@ public class MainController {
 
 		return "index.html";
 	}
-
-	@GetMapping("/create-account")
-	public String createAccount() {
-		return "create-user.html";
-	}
 }

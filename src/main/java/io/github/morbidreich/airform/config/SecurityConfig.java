@@ -28,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		auth.jdbcAuthentication()
 				  .dataSource(dataSource)
-				  .usersByUsernameQuery("SELECT user_name, password, active FROM user WHERE user_name = ?")
-				  .authoritiesByUsernameQuery("SELECT user_name, roles FROM user WHERE user_name = ?");
+				  .usersByUsernameQuery("SELECT username, password, active FROM user WHERE username = ?")
+				  .authoritiesByUsernameQuery("SELECT username, roles FROM user WHERE username = ?");
 
 //		uses jdbc authentication with default database schema, if u wanna use other schema then
 //    u need to use ### se above

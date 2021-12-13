@@ -1,61 +1,61 @@
 package io.github.morbidreich.airform.controller;
 
+import io.github.morbidreich.airform.dto.UserDto;
 import io.github.morbidreich.airform.entity.User;
 import io.github.morbidreich.airform.repository.UserRepo;
+import io.github.morbidreich.airform.service.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
 public class CreateAccountController {
 
 	UserRepo userRepo;
+	UserService userService;
 
-	public CreateAccountController(UserRepo userRepo) {
+	public CreateAccountController(UserRepo userRepo, UserService userService) {
 		this.userRepo = userRepo;
+		this.userService = userService;
+	}
+
+	@GetMapping("/create-account")
+	public String createAccount(Model model) {
+		model.addAttribute("user", new User());
+
+		return "create-user";
 	}
 
 	@PostMapping("/create-user")
-	public String createUser(@RequestParam String username,
-	                         @RequestParam String pass1,
-	                         @RequestParam String pass2,
-	                         @RequestParam String email) {
-
+	public String createUser(@ModelAttribute User user, Model model) {
 		// TODO form validation
+		System.out.println(user);
+		userRepo.save(user);
+		model.addAttribute("user", user);
 
-		User user = new User(username, pass1, email, false, "ROLE_APPLICANT");
-		Long newUserId = userRepo.save(user).getId();
-
-		String uri = UriComponentsBuilder
-				  .fromPath("/create-user-succes")
-				  .queryParam("id", newUserId)
-				  .build().toString();
-		return "redirect:" + uri;
+		return "redirect:/create-user-success";
 	}
 
-	@GetMapping("/create-user-succes")
-	public String userCreated(@RequestParam Long id, Model model) {
-		model.addAttribute("id", id);
-		return "create-user-succes";
+	@GetMapping("/create-user-success")
+	public String userCreated() {
+
+		return "create-user-success";
 	}
 
 	// When user gets created account is by default inactive, and have to
 	// be activated by admin. Since that's WIP version of application
 	// there's possibility to activate account by user himself
-	@GetMapping("/cheat-activation")
-	public String cheatActivation(@RequestParam Long id) {
 
-		Optional<User> u = userRepo.findById(id);
-		if (u.isPresent()) {
-			u.get().setActive(true);
-			userRepo.save(u.get());
-		}
+	@GetMapping("/cheat-activation/{username}")
+	public String cheatActivation(@PathVariable String username, Authentication authentication) {
+
+		//if (authentication.isAuthenticated())
+			userService.activateUser(username);
+
 		return "redirect:/";
 	}
 }

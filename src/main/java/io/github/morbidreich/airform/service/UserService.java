@@ -21,17 +21,26 @@ public class UserService {
 	}
 
 	public Optional<User> getUser(String name) {
-		return userRepo.findByUserName(name);
+		return userRepo.findByUsername(name);
 	}
 
 	@Transactional
-	public void updateUserDetails(String userName, UserDetails userDetails) {
-		Optional<User> userOpt = userRepo.findByUserName(userName);
+	public void updateUserDetails(String username, UserDetails userDetails) {
+		Optional<User> userOpt = userRepo.findByUsername(username);
 		if (userOpt.isPresent()) {
 			userDetailsRepo.save(userDetails);
 			User u = userOpt.get();
 			u.setUserDetails(userDetails);
 			userRepo.save(u);
 		}
+	}
+	@Transactional
+	public boolean activateUser(String username) {
+		Optional<User> userOptional = userRepo.findByUsername(username);
+		if (userOptional.isPresent()) {
+			userOptional.get().setActive(true);
+			return true;
+		}
+		return false;
 	}
 }
