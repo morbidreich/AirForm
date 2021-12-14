@@ -1,7 +1,7 @@
 package io.github.morbidreich.airform.dto;
 
-import io.github.morbidreich.airform.entity.BaloonType;
-import io.github.morbidreich.airform.entity.FormStatus;
+import io.github.morbidreich.airform.entity.enums.ProbingBaloonSize;
+import io.github.morbidreich.airform.entity.enums.FormStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -38,7 +38,7 @@ public class ProbingFormDto {
 		private Integer maxHeight;
 		private String baloonColor;
 		private String eventDescription;
-		private BaloonType baloonType;
+		private ProbingBaloonSize probingBaloonSize;
 		private boolean rodo;
 
 		public Builder() {
@@ -74,8 +74,8 @@ public class ProbingFormDto {
 			return this;
 		}
 
-		public Builder withBaloonType(BaloonType baloonType) {
-			this.baloonType = baloonType;
+		public Builder withBaloonType(ProbingBaloonSize probingBaloonSize) {
+			this.probingBaloonSize = probingBaloonSize;
 			return this;
 		}
 
@@ -175,6 +175,6 @@ public class ProbingFormDto {
 	private Integer maxHeight;
 	private String baloonColor;
 	private String description;
-	private BaloonType baloonType;
+	private ProbingBaloonSize probingBaloonSize;
 	private boolean rodo;
 }

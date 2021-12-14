@@ -1,13 +1,13 @@
-package io.github.morbidreich.airform.entity;
+package io.github.morbidreich.airform.entity.enums;
 
-public enum BaloonType {
+public enum ProbingBaloonSize {
 	LIGHT("Lekki"),
 	MEDIUM("Średni"),
 	HEAVY("Ciężki");
 
 	private final String displayValue;
 
-	private BaloonType(String displayValue) {
+	private ProbingBaloonSize(String displayValue) {
 		this.displayValue = displayValue;
 	}
 

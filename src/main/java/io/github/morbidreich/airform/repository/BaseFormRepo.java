@@ -1,8 +1,8 @@
 package io.github.morbidreich.airform.repository;
 
-import io.github.morbidreich.airform.entity.BaseForm;
-import io.github.morbidreich.airform.entity.FormStatus;
-import io.github.morbidreich.airform.entity.FormType;
+import io.github.morbidreich.airform.entity.forms.BaseForm;
+import io.github.morbidreich.airform.entity.enums.FormStatus;
+import io.github.morbidreich.airform.entity.enums.FormType;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

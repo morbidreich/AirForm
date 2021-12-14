@@ -1,4 +1,4 @@
-package io.github.morbidreich.airform.entity;
+package io.github.morbidreich.airform.entity.enums;
 
 public enum FormType {
 	PROBING("Sondowanie atmosfery"),

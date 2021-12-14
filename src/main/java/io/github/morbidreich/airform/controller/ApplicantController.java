@@ -1,10 +1,7 @@
 package io.github.morbidreich.airform.controller;
 
 import io.github.morbidreich.airform.dto.ProbingFormDto;
-import io.github.morbidreich.airform.entity.BaseForm;
-import io.github.morbidreich.airform.entity.ProbingForm;
-import io.github.morbidreich.airform.entity.User;
-import io.github.morbidreich.airform.repository.UserRepo;
+import io.github.morbidreich.airform.entity.forms.BaseForm;
 import io.github.morbidreich.airform.service.BaseFormService;
 import io.github.morbidreich.airform.service.ProbingFormService;
 import org.springframework.security.core.Authentication;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Properties;
 
 @Controller
 @RequestMapping("/applicant")

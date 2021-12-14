@@ -2,6 +2,9 @@ package io.github.morbidreich.airform.service;
 
 import io.github.morbidreich.airform.dto.ProbingFormDto;
 import io.github.morbidreich.airform.entity.*;
+import io.github.morbidreich.airform.entity.enums.FormStatus;
+import io.github.morbidreich.airform.entity.enums.FormType;
+import io.github.morbidreich.airform.entity.forms.ProbingForm;
 import io.github.morbidreich.airform.repository.ProbingFormRepo;
 import org.springframework.stereotype.Service;
 

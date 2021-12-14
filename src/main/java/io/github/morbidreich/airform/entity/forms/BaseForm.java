@@ -1,5 +1,7 @@
-package io.github.morbidreich.airform.entity;
+package io.github.morbidreich.airform.entity.forms;
 
+import io.github.morbidreich.airform.entity.enums.FormStatus;
+import io.github.morbidreich.airform.entity.enums.FormType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +12,9 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+/**
+ * base class for each form, holding common fields
+ */
 public class BaseForm {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

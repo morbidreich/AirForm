@@ -1,6 +1,7 @@
-package io.github.morbidreich.airform.entity;
+package io.github.morbidreich.airform.entity.forms;
 
 import io.github.morbidreich.airform.dto.ProbingFormDto;
+import io.github.morbidreich.airform.entity.enums.ProbingBaloonSize;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,7 +31,7 @@ public class ProbingForm extends BaseForm {
 	private String baloonColor;
 	private String eventDescription;
 	@Enumerated(EnumType.STRING)
-	private BaloonType baloonType;
+	private ProbingBaloonSize probingBaloonSize;
 
 	//for testing my form will stop here
 	/*
@@ -69,6 +70,6 @@ public class ProbingForm extends BaseForm {
 		this.maxHeight=form.getMaxHeight();
 		this.baloonColor=form.getBaloonColor();
 		this.eventDescription=form.getDescription();
-		this.baloonType=form.getBaloonType();
+		this.probingBaloonSize =form.getProbingBaloonSize();
 	}
 }

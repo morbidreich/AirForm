@@ -1,6 +1,6 @@
 package io.github.morbidreich.airform.service;
 
-import io.github.morbidreich.airform.entity.BaseForm;
+import io.github.morbidreich.airform.entity.forms.BaseForm;
 import io.github.morbidreich.airform.repository.BaseFormRepo;
 import org.springframework.stereotype.Service;
 
