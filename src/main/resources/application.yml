@@ -2,9 +2,10 @@ spring:
   jpa:
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
   datasource:
     url: jdbc:mysql://localhost:3306/springsecurity
     username: system
     password: system
+    #initialization-mode: always

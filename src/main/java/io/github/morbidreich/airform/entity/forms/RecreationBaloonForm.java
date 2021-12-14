@@ -4,9 +4,7 @@ import io.github.morbidreich.airform.entity.enums.RecreationBaloonType;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,7 +14,7 @@ public class RecreationBaloonForm extends IntermediateForm {
 
     //call super constructor to set applicationDateTime
     public RecreationBaloonForm() { super(); }
-
+    @Enumerated(EnumType.STRING)
     private RecreationBaloonType recreationBaloonType;
     private String color;
     private String diameter;

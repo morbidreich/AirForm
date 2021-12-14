@@ -1,7 +1,8 @@
 package io.github.morbidreich.airform.controller;
 
-import io.github.morbidreich.airform.dto.ProbingFormDto;
 import io.github.morbidreich.airform.entity.forms.BaseForm;
+import io.github.morbidreich.airform.entity.forms.ProbingForm;
+import io.github.morbidreich.airform.entity.forms.RecreationBaloonForm;
 import io.github.morbidreich.airform.service.BaseFormService;
 import io.github.morbidreich.airform.service.ProbingFormService;
 import org.springframework.security.core.Authentication;
@@ -19,7 +20,8 @@ public class ApplicantController {
 	ProbingFormService probingFormService;
 	BaseFormService baseFormService;
 
-	public ApplicantController(ProbingFormService probingFormService, BaseFormService baseFormService) {
+	public ApplicantController(ProbingFormService probingFormService,
+							   BaseFormService baseFormService) {
 		this.probingFormService = probingFormService;
 		this.baseFormService = baseFormService;
 	}
@@ -44,26 +46,33 @@ public class ApplicantController {
 
 	@GetMapping("/probing-form")
 	public String getProbingForm(Model model, Principal principal) {
-		//prepopulate probing form dto with user details if present
-		ProbingFormDto probingFormDto = probingFormService.prepopulateProbingFormDto(principal.getName());
-		model.addAttribute("form", probingFormDto);
+		ProbingForm probingForm = new ProbingForm();
+		probingForm = (ProbingForm) baseFormService.prepopulateForm(probingForm, principal.getName());
+		model.addAttribute("form", probingForm);
 
 		return "asm-forms/stratospheric-baloon-form";
 	}
 
 	@PostMapping("/probing-form-save")
-	public String saveProbingForm(@ModelAttribute ProbingFormDto form, Principal principal) {
-		form.setApplicantUsername(principal.getName());
-
+	public String saveProbingForm(@ModelAttribute ProbingForm form, Principal principal) {
 		probingFormService.save(form);
-
 		return "redirect:/applicant";
 	}
 
-//	@GetMapping("/user-details")
-//	public String applicantForm(Authentication authentication) {
-//
-//		System.out.println(authentication.getPrincipal());
-//		return "applicant-form.html";
-//	}
+	@GetMapping("/recreation-baloon-form")
+	public String recreationBaloonForm(Model model, Principal principal) {
+		RecreationBaloonForm form = new RecreationBaloonForm();
+		form = (RecreationBaloonForm) baseFormService.prepopulateForm(form, principal.getName());
+		model.addAttribute("form", new RecreationBaloonForm());
+
+		return "asm-forms/recreation-baloon-form";
+	}
+
+	@PostMapping("/baloon-form-save")
+	public String saveBaloonForm(@ModelAttribute RecreationBaloonForm form, Principal principal) {
+
+		//probingFormService.save(form);
+
+		return "redirect:/applicant";
+	}
 }

@@ -1,6 +1,5 @@
 package io.github.morbidreich.airform.entity.forms;
 
-import io.github.morbidreich.airform.dto.ProbingFormDto;
 import io.github.morbidreich.airform.entity.enums.ProbingBaloonSize;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,6 +29,7 @@ public class ProbingForm extends BaseForm {
 	private Integer maxHeight;
 	private String baloonColor;
 	private String eventDescription;
+	private String description;
 	@Enumerated(EnumType.STRING)
 	private ProbingBaloonSize probingBaloonSize;
 
@@ -50,26 +50,4 @@ public class ProbingForm extends BaseForm {
 		super();
 	}
 
-	public ProbingForm(ProbingFormDto form) {
-		super();
-		this.setApplicantUsername(form.getApplicantUsername());
-		super.setFormStatus(form.getFormStatus());
-		super.setName(form.getName());
-		super.setPhone(form.getPhone());
-		super.setEmail(form.getEmail());
-		super.setRodo(form.isRodo());
-		this.mainDateTime=form.getMainDateTime();
-		this.backupDateTime=form.getBackupDateTime();
-		this.location=form.getLocation();
-		this.latitudeDegrees=form.getLatitudeDegrees();
-		this.latitudeMinutes = form.getLatitudeMinutes();
-		this.latitudeSeconds=form.getLatitudeSeconds();
-		this.longitudeDegrees= form.getLongitudeDegrees();
-		this.longitudeMinutes=form.getLongitudeMinutes();
-		this.longitudeSeconds=form.getLongitudeSeconds();
-		this.maxHeight=form.getMaxHeight();
-		this.baloonColor=form.getBaloonColor();
-		this.eventDescription=form.getDescription();
-		this.probingBaloonSize =form.getProbingBaloonSize();
-	}
 }

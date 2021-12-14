@@ -1,5 +1,7 @@
 package io.github.morbidreich.airform.entity.forms;
 
+import io.github.morbidreich.airform.entity.User;
+import io.github.morbidreich.airform.entity.UserDetails;
 import io.github.morbidreich.airform.entity.enums.FormStatus;
 import io.github.morbidreich.airform.entity.enums.FormType;
 import lombok.Getter;
@@ -33,5 +35,17 @@ public class BaseForm {
 
 	public BaseForm() {
 		applicationDateTime = LocalDateTime.now();
+	}
+	public BaseForm(User u) {
+		// call noarg constructor
+		this();
+
+		//prepopulate user details
+		UserDetails ud = u.getUserDetails();
+		if (ud != null) {
+			this.name = ud.getName() + " " + ud.getSurname();
+			this.phone = ud.getPhone();
+			this.email = u.getEmail();
+		}
 	}
 }

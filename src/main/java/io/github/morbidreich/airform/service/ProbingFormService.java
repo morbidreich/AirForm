@@ -1,6 +1,5 @@
 package io.github.morbidreich.airform.service;
 
-import io.github.morbidreich.airform.dto.ProbingFormDto;
 import io.github.morbidreich.airform.entity.*;
 import io.github.morbidreich.airform.entity.enums.FormStatus;
 import io.github.morbidreich.airform.entity.enums.FormType;
@@ -22,38 +21,16 @@ public class ProbingFormService {
 		this.userService = userService;
 	}
 
-	public void save(ProbingFormDto form) {
-
-		//get form dto from controller
-		ProbingForm probingForm = new ProbingForm(form);
-
-		//ERROR ERROR THAT"S WRONG, FIX ASAP ERROR ERROR
-		// for now hardcode applicat id as 13L - good old qwe
-		//probingForm.setApplicantId(13L);
+	public void save(ProbingForm form) {
 
 		//since this is a new form, set formStatus as filed
-		probingForm.setFormStatus(FormStatus.FILED);
-		probingForm.setFormType(FormType.PROBING);
+		form.setFormStatus(FormStatus.FILED);
+		form.setFormType(FormType.PROBING);
 
 		//save form to database
-		probingFormRepo.save(probingForm);
+		probingFormRepo.save(form);
 
 	}
-
-	// return ProbingFormDto filled with user details if userdetails are present
-	public ProbingFormDto prepopulateProbingFormDto(String name) {
-		Optional<User> optionalUser = userService.getUser(name);
-		if (optionalUser.isPresent() && optionalUser.get().getUserDetails() != null) {
-			User user = optionalUser.get();
-			UserDetails userDetails = user.getUserDetails();
-			ProbingFormDto.Builder b = new ProbingFormDto.Builder();
-			return b.withName(userDetails.getName() + " " + userDetails.getSurname())
-					  .withPhone(userDetails.getPhone())
-					  .withEmail(user.getEmail())
-					  .build();
-		} else return new ProbingFormDto();
-	}
-
 	public List<ProbingForm> findAllByUsername(String name) {
 		return probingFormRepo.findAllByApplicantUsername(name);
 	}
