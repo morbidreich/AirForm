@@ -6,10 +6,10 @@
 </head>
 <body>
 <p>
-Twoje konto <span th:text="${}">username</span> zostało utworzone poprawnie. Musisz jednak poczekać,<br>aż zostanie ono aktywowane przez administratora.</p>
+Twoje konto <span th:text="${user.username}">username</span> zostało utworzone poprawnie. Musisz jednak poczekać,<br>aż zostanie ono aktywowane przez administratora.</p>
 <p><a href="/">Powrót na stronę główną</a></p>
 <br><br><br><br><br><br><br><br>
 <p>...pssst! to jeszcze wersja proof-of-concept! nie ma żadnego admina! </p>
-<p><a th:href="@{|/cheat-activation/${principal.getUsername()}|}">kliknij aby samodzielnie aktywować swoje konto</a></p>
+<p><a th:href="@{|/cheat-activation/${user.username}|}">kliknij aby samodzielnie aktywować swoje konto</a></p>
 </body>
 </html>

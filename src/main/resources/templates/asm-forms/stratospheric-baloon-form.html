@@ -114,7 +114,7 @@
             <label for="color" class="col-sm-2 col-form-label">Rodzaj balonu</label>
             <div class="col-sm-3">
                 <select name="probingBaloonSize" class="form-select" aria-label="Default select example">
-                    <option th:each="probingBaloonSize : ${T(io.github.morbidreich.airform.entity.ProbingBaloonSize).values()}"
+                    <option th:each="probingBaloonSize : ${T(io.github.morbidreich.airform.entity.enums.ProbingBaloonSize).values()}"
                             th:value="${probingBaloonSize}" th:text="${probingBaloonSize.displayValue()}"></option>
                 </select>
             </div>

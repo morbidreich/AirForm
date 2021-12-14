@@ -34,16 +34,28 @@ public class CreateAccountController {
 	public String createUser(@ModelAttribute User user, Model model) {
 		// TODO form validation
 		System.out.println(user);
-		userRepo.save(user);
-		model.addAttribute("user", user);
 
-		return "redirect:/create-user-success";
+		if (userRepo.findByUsername(user.getUsername()).isPresent())
+			return "redirect:/create-user-error";
+		else {
+			user.setRoles("ROLE_APPLICANT");
+			userRepo.save(user);
+			model.addAttribute("user", user);
+
+			return "redirect:/create-user-success";
+		}
 	}
 
 	@GetMapping("/create-user-success")
 	public String userCreated() {
 
 		return "create-user-success";
+	}
+
+	@GetMapping("/create-user-error")
+	public String userCreationError() {
+
+		return "create-user-error";
 	}
 
 	// When user gets created account is by default inactive, and have to
