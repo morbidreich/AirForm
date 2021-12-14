@@ -51,7 +51,7 @@ public class ApplicantController {
 	@PostMapping("/probing-form-save")
 	public String saveProbingForm(@ModelAttribute ProbingFormDto form, Principal principal) {
 		form.setApplicantUsername(principal.getName());
-		System.out.println(form);
+
 		probingFormService.save(form);
 
 		return "redirect:/applicant";

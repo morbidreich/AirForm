@@ -1,10 +1,7 @@
 package io.github.morbidreich.airform.service;
 
 import io.github.morbidreich.airform.dto.ProbingFormDto;
-import io.github.morbidreich.airform.entity.FormStatus;
-import io.github.morbidreich.airform.entity.ProbingForm;
-import io.github.morbidreich.airform.entity.User;
-import io.github.morbidreich.airform.entity.UserDetails;
+import io.github.morbidreich.airform.entity.*;
 import io.github.morbidreich.airform.repository.ProbingFormRepo;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +30,7 @@ public class ProbingFormService {
 
 		//since this is a new form, set formStatus as filed
 		probingForm.setFormStatus(FormStatus.FILED);
+		probingForm.setFormType(FormType.PROBING);
 
 		//save form to database
 		probingFormRepo.save(probingForm);

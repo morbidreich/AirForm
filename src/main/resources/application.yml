@@ -1,6 +1,8 @@
 spring:
   jpa:
     defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
   datasource:
     url: jdbc:mysql://localhost:3306/springsecurity
     username: root

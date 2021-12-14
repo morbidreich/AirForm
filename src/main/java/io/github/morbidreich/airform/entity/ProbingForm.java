@@ -9,21 +9,12 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name="probing_form")
 @Getter
 @Setter
-public class ProbingForm {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-	private LocalDateTime applicationDateTime;
-	private String applicantUsername;
-	@Enumerated(EnumType.STRING)
-	private FormStatus formStatus;
-	private String name;
-	private String phone;
-	private String email;
+public class ProbingForm extends BaseForm {
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime mainDateTime;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
@@ -40,7 +31,6 @@ public class ProbingForm {
 	private String eventDescription;
 	@Enumerated(EnumType.STRING)
 	private BaloonType baloonType;
-	private boolean rodo;
 
 	//for testing my form will stop here
 	/*
@@ -56,30 +46,29 @@ public class ProbingForm {
 	*/
 
 	public ProbingForm() {
-		this.applicationDateTime = LocalDateTime.now();
+		super();
 	}
 
 	public ProbingForm(ProbingFormDto form) {
-
-		this.applicationDateTime = LocalDateTime.now();
-		this.applicantUsername=form.getApplicantUsername();
-		this.formStatus=form.getFormStatus();
-		this.name=form.getName();
-		this.phone=form.getPhone();
-		this.email=form.getEmail();
+		super();
+		this.setApplicantUsername(form.getApplicantUsername());
+		super.setFormStatus(form.getFormStatus());
+		super.setName(form.getName());
+		super.setPhone(form.getPhone());
+		super.setEmail(form.getEmail());
+		super.setRodo(form.isRodo());
 		this.mainDateTime=form.getMainDateTime();
 		this.backupDateTime=form.getBackupDateTime();
 		this.location=form.getLocation();
 		this.latitudeDegrees=form.getLatitudeDegrees();
 		this.latitudeMinutes = form.getLatitudeMinutes();
 		this.latitudeSeconds=form.getLatitudeSeconds();
-		this.longitudeDegrees= form.getLongitudeSeconds();
+		this.longitudeDegrees= form.getLongitudeDegrees();
 		this.longitudeMinutes=form.getLongitudeMinutes();
 		this.longitudeSeconds=form.getLongitudeSeconds();
 		this.maxHeight=form.getMaxHeight();
 		this.baloonColor=form.getBaloonColor();
 		this.eventDescription=form.getDescription();
 		this.baloonType=form.getBaloonType();
-		this.rodo=form.isRodo();
 	}
 }
