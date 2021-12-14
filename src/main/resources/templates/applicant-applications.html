@@ -27,9 +27,9 @@
                 </tr>
                 <tr th:each="form, status: ${formList}">
                     <td th:text="${status.count}">1</td>
-                    <td th:text="${form.getFormType()}">rodzaj formularza</td>
+                    <td th:text="${form.getFormType().toString()}">rodzaj formularza</td>
                     <td th:text="${form.getApplicationDateTime()}">12.12.2021T08:30</td>
-                    <td th:text="${form.getFormStatus()}">zaakceptowany</td>
+                    <td th:text="${form.getFormStatus().toString()}">zaakceptowany</td>
                     <td>zobacz/usuń</td>
 
                 </tr>
