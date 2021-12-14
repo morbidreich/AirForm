@@ -1,7 +1,10 @@
 package io.github.morbidreich.airform.service;
 
+import io.github.morbidreich.airform.entity.BaseForm;
 import io.github.morbidreich.airform.repository.BaseFormRepo;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BaseFormService {
@@ -13,5 +16,9 @@ public class BaseFormService {
 
 	public int countAllByApplicantUsername(String applicantUsername) {
 		return baseFormRepo.countAllByApplicantUsername(applicantUsername);
+	}
+
+	public List<BaseForm> getAllUserForms(String name) {
+		return baseFormRepo.findAllByApplicantUsername(name);
 	}
 }

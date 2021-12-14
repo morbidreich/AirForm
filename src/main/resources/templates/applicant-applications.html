@@ -5,6 +5,23 @@
     <title>Złożone wnioski</title>
 </head>
 <body>
-Liczba złożonych wniosków: <span th:text="${probingFormList.size()}">liczba</span>
+
+Liczba złożonych wniosków: <span th:text="${formList.size()}">liczba</span>
+<table>
+    <tr>
+        <th>Lp</th>
+        <th>Typ zgłoszenia</th>
+        <th>Data zgłoszenia</th>
+        <th>Status</th>
+        <th>Akcja (zobacz/usuń)</th>
+    </tr>
+    <tr th:each="form, status: ${formList}">
+        <td th:text="${status.count}">1</td>
+        <td th:text="${form.getFormType()}">rodzaj formularza</td>
+        <td th:text="${form.getApplicationDateTime()}">12.12.2021T08:30</td>
+        <td th:text="${form.getFormStatus()}">zaakceptowany</td>
+        <td>zobacz/usuń</td>
+    </tr>
+</table>
 </body>
 </html>

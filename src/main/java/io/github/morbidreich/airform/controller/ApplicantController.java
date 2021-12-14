@@ -1,6 +1,7 @@
 package io.github.morbidreich.airform.controller;
 
 import io.github.morbidreich.airform.dto.ProbingFormDto;
+import io.github.morbidreich.airform.entity.BaseForm;
 import io.github.morbidreich.airform.entity.ProbingForm;
 import io.github.morbidreich.airform.entity.User;
 import io.github.morbidreich.airform.repository.UserRepo;
@@ -38,8 +39,10 @@ public class ApplicantController {
 
 	@GetMapping("/applications")
 	public String getUserApplications(Principal principal, Model model) {
-		List<ProbingForm> probingFormList = probingFormService.findAllByUsername(principal.getName());
-		model.addAttribute("probingFormList", probingFormList);
+		List<BaseForm> formList = baseFormService.getAllUserForms(principal.getName());
+		model.addAttribute("formList", formList);
+
+		//List<ProbingForm> probingFormList = probingFormService.findAllByUsername(principal.getName());
 		return "applicant-applications";
 	}
 

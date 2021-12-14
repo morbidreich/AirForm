@@ -2,7 +2,6 @@ package io.github.morbidreich.airform.controller;
 
 import io.github.morbidreich.airform.entity.User;
 import io.github.morbidreich.airform.entity.UserDetails;
-import io.github.morbidreich.airform.repository.UserRepo;
 import io.github.morbidreich.airform.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
