@@ -5,6 +5,7 @@ import io.github.morbidreich.airform.entity.forms.ProbingForm;
 import io.github.morbidreich.airform.entity.forms.RecreationBaloonForm;
 import io.github.morbidreich.airform.service.BaseFormService;
 import io.github.morbidreich.airform.service.ProbingFormService;
+import io.github.morbidreich.airform.service.RecreationBaloonService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +19,15 @@ import java.util.List;
 public class ApplicantController {
 
 	ProbingFormService probingFormService;
+	RecreationBaloonService recreationBaloonService;
 	BaseFormService baseFormService;
 
 	public ApplicantController(ProbingFormService probingFormService,
-							   BaseFormService baseFormService) {
+							   BaseFormService baseFormService,
+							   RecreationBaloonService recreationBaloonService) {
 		this.probingFormService = probingFormService;
 		this.baseFormService = baseFormService;
+		this.recreationBaloonService = recreationBaloonService;
 	}
 
 	@GetMapping("")
@@ -40,7 +44,6 @@ public class ApplicantController {
 		List<BaseForm> formList = baseFormService.getAllUserForms(principal.getName());
 		model.addAttribute("formList", formList);
 
-		//List<ProbingForm> probingFormList = probingFormService.findAllByUsername(principal.getName());
 		return "applicant-applications";
 	}
 
@@ -55,7 +58,9 @@ public class ApplicantController {
 
 	@PostMapping("/probing-form-save")
 	public String saveProbingForm(@ModelAttribute ProbingForm form, Principal principal) {
-		probingFormService.save(form);
+		form.setApplicantUsername(principal.getName());
+		probingFormService.saveNew(form);
+
 		return "redirect:/applicant";
 	}
 
@@ -63,15 +68,15 @@ public class ApplicantController {
 	public String recreationBaloonForm(Model model, Principal principal) {
 		RecreationBaloonForm form = new RecreationBaloonForm();
 		form = (RecreationBaloonForm) baseFormService.prepopulateForm(form, principal.getName());
-		model.addAttribute("form", new RecreationBaloonForm());
+		model.addAttribute("form", form);
 
 		return "asm-forms/recreation-baloon-form";
 	}
 
 	@PostMapping("/baloon-form-save")
 	public String saveBaloonForm(@ModelAttribute RecreationBaloonForm form, Principal principal) {
-
-		//probingFormService.save(form);
+		form.setApplicantUsername(principal.getName());
+		recreationBaloonService.saveNew(form);
 
 		return "redirect:/applicant";
 	}

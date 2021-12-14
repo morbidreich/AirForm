@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Balony z helem, LED, lampiony - formularz zgłoszeniowy</title>
@@ -37,22 +37,15 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label for="mainDateTime" class="col-sm-2 col-form-label">Termin zasadniczy</label>
+            <label for="startDateTime" class="col-sm-2 col-form-label">Data realizacji</label>
             <div class="col-sm-6">
-                <input th:field="*{mainDateTime}" type="datetime-local" class="form-control" id="mainDateTime">
+                <input th:field="*{startDateTime}" type="datetime-local" class="form-control" id="startDateTime">
             </div>
         </div>
         <div class="row mb-3">
-            <label for="backupDateTime" class="col-sm-2 col-form-label">Termin zapasowy</label>
+            <label for="endDateTime" class="col-sm-2 col-form-label">Data zakończenia</label>
             <div class="col-sm-6">
-                <input th:field="*{backupDateTime}" type="datetime-local" class="form-control" id="backupDateTime">
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <label for="location" class="col-sm-2 col-form-label">Miejscowość</label>
-            <div class="col-sm-6">
-                <input th:field="*{location}" type="text" class="form-control" id="location">
+                <input th:field="*{endDateTime}" type="datetime-local" class="form-control" id="endDateTime">
             </div>
         </div>
 
@@ -94,34 +87,54 @@
         </div>
 
         <div class="row mb-3">
-            <label for="maxHeight" class="col-sm-2 col-form-label">Maksymalna wysokość</label>
+            <label for="color" class="col-sm-2 col-form-label">Rodzaj balonów</label>
             <div class="col-sm-3">
-                <input th:field="*{maxHeight}" type="number" class="form-control" id="maxHeight">
-            </div>
-            <div class="col-sm-1">metrów</div>
-        </div>
-
-        <div class="row mb-3">
-            <label for="color" class="col-sm-2 col-form-label">Kolor balonu</label>
-            <div class="col-sm-3">
-                <input th:field="*{baloonColor}" type="text" class="form-control" id="color">
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <label for="color" class="col-sm-2 col-form-label">Rodzaj balonu</label>
-            <div class="col-sm-3">
-                <select name="probingBaloonSize" class="form-select" aria-label="Default select example">
-                    <option th:each="probingBaloonSize : ${T(io.github.morbidreich.airform.entity.enums.ProbingBaloonSize).values()}"
-                            th:value="${probingBaloonSize}" th:text="${probingBaloonSize.displayValue()}"></option>
+                <select name="baloonType" class="form-select" aria-label="Default select example">
+                    <option th:each="baloonType : ${T(io.github.morbidreich.airform.entity.enums.RecreationBaloonType).values()}"
+                            th:value="${baloonType}" th:text="${baloonType.toString()}"></option>
                 </select>
             </div>
         </div>
 
         <div class="row mb-3">
-            <label for="description" class="col-sm-2 col-form-label">Opis przedsięwzięcia</label>
+            <label for="color" class="col-sm-2 col-form-label">Kolor balonów</label>
+            <div class="col-sm-3">
+                <input th:field="*{color}" type="text" class="form-control" id="color">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="diameter" class="col-sm-2 col-form-label">Średnica (cm)</label>
+            <div class="col-sm-3">
+                <input th:field="*{diameter}" type="number" class="form-control" id="diameter">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="baloonCount" class="col-sm-2 col-form-label">Ilość (szt)</label>
+            <div class="col-sm-3">
+                <input th:field="*{baloonCount}" type="number" class="form-control" id="baloonCount">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="ventureName" class="col-sm-2 col-form-label">Nazwa przedsięwzięcia</label>
             <div class="col-sm-6">
-                <textarea th:field="*{description}" rows="3" class="form-control" id="description"></textarea>
+                <input th:field="*{ventureName}" type="text" class="form-control" id="ventureName">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="ventureOrganiserName" class="col-sm-2 col-form-label">Nazwisko wykonawcy</label>
+            <div class="col-sm-3">
+                <input th:field="*{ventureOrganiserName}" type="text" class="form-control" id="ventureOrganiserName">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="ventureOrganiserPhone" class="col-sm-2 col-form-label">Telefon wykonawcy</label>
+            <div class="col-sm-3">
+                <input th:field="*{ventureOrganiserPhone}" type="text" class="form-control" id="ventureOrganiserPhone">
             </div>
         </div>
 

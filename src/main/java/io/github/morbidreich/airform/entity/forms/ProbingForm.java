@@ -1,5 +1,6 @@
 package io.github.morbidreich.airform.entity.forms;
 
+import io.github.morbidreich.airform.entity.enums.FormType;
 import io.github.morbidreich.airform.entity.enums.ProbingBaloonSize;
 import lombok.Getter;
 import lombok.Setter;
@@ -48,6 +49,7 @@ public class ProbingForm extends BaseForm {
 
 	public ProbingForm() {
 		super();
+		this.setFormType(FormType.PROBING);
 	}
 
 }

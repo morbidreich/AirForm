@@ -4,8 +4,7 @@ public enum FormType {
 	PROBING("Sondowanie atmosfery"),
 	FIREWORKS ("Sztuczne ognie"),
 	LASERS_LIGHTS ("Pokazy lasery/światła"),
-	HELIUM_BALOONS ("Balony z helem"),
-	LANTERNS_LED_BALOONS ("Lampiony"),
+	RECREATION_BALOONS ("Balony i lampiony"),
 	EXERCISE_COMPETITION ("Zawody/ćwiczenia");
 
 	private final String description;

@@ -21,11 +21,10 @@ public class ProbingFormService {
 		this.userService = userService;
 	}
 
-	public void save(ProbingForm form) {
+	public void saveNew(ProbingForm form) {
 
 		//since this is a new form, set formStatus as filed
 		form.setFormStatus(FormStatus.FILED);
-		form.setFormType(FormType.PROBING);
 
 		//save form to database
 		probingFormRepo.save(form);
