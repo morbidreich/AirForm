@@ -4,6 +4,7 @@ import io.github.morbidreich.airform.dto.ProbingFormDto;
 import io.github.morbidreich.airform.entity.ProbingForm;
 import io.github.morbidreich.airform.entity.User;
 import io.github.morbidreich.airform.repository.UserRepo;
+import io.github.morbidreich.airform.service.BaseFormService;
 import io.github.morbidreich.airform.service.ProbingFormService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -19,15 +20,18 @@ import java.util.Properties;
 public class ApplicantController {
 
 	ProbingFormService probingFormService;
+	BaseFormService baseFormService;
 
-
-	public ApplicantController(ProbingFormService probingFormService) {
+	public ApplicantController(ProbingFormService probingFormService, BaseFormService baseFormService) {
 		this.probingFormService = probingFormService;
+		this.baseFormService = baseFormService;
 	}
 
 	@GetMapping("")
 	public String applicantHomepage(Authentication authentication, Model model) {
-		model.addAttribute("authObject", authentication);
+		model.addAttribute("authentication", authentication);
+		model.addAttribute("applicationsCount",
+				  baseFormService.countAllByApplicantUsername(authentication.getName()));
 
 		return "applicant-home.html";
 	}

@@ -16,7 +16,7 @@
         <div class="col-sm-7"></div>
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-            <a th:if="${authObject.isAuthenticated}" th:text="'Wyloguj (' + ${authObject.getName} + ')'" href="/logout">wyloguj</a>
+            <a th:if="${authentication.isAuthenticated}" th:text="'Wyloguj (' + ${authentication.getName} + ')'" href="/logout">wyloguj</a>
         </div>
     </div>
     <div class="row" style="height: 30px"></div>
@@ -79,7 +79,7 @@
         <div class="col-sm-1"></div>
 
         <div class="col-sm-3">
-            <a href="/applicant/applications" class="btn btn-primary" style="width: 100%">Wyświetl moje wnioski</a>
+            <a href="/applicant/applications" th:text="|Wyświetl moje wnioski (${applicationsCount})|" class="btn btn-primary" style="width: 100%">Wyświetl moje wnioski</a>
         </div>
 
         <div class="col-sm-3">
