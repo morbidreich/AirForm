@@ -89,9 +89,9 @@
         <div class="row mb-3">
             <label for="color" class="col-sm-2 col-form-label">Rodzaj balonów</label>
             <div class="col-sm-3">
-                <select name="baloonType" class="form-select" aria-label="Default select example">
-                    <option th:each="baloonType : ${T(io.github.morbidreich.airform.entity.enums.RecreationBaloonType).values()}"
-                            th:value="${baloonType}" th:text="${baloonType.toString()}"></option>
+                <select name="recreationBaloonType" class="form-select" aria-label="Default select example">
+                    <option th:each="recreationBaloonType : ${T(io.github.morbidreich.airform.entity.enums.RecreationBaloonType).values()}"
+                            th:value="${recreationBaloonType}" th:text="${recreationBaloonType.displayValue()}"></option>
                 </select>
             </div>
         </div>

@@ -7,7 +7,7 @@ public enum ProbingBaloonSize {
 
 	private final String displayValue;
 
-	private ProbingBaloonSize(String displayValue) {
+	ProbingBaloonSize(String displayValue) {
 		this.displayValue = displayValue;
 	}
 

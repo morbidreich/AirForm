@@ -5,12 +5,13 @@ public enum RecreationBaloonType {
     BALOON_HELIUM("Balony z helem"),
     LANTERN("Lampiony");
 
-    private final String description;
+    private final String displayValue;
 
     RecreationBaloonType(String description) {
-        this.description = description;
+        this.displayValue = description;
     }
 
-    @Override
-    public String toString() { return description; }
+    public String displayValue() {
+        return displayValue;
+    }
 }
