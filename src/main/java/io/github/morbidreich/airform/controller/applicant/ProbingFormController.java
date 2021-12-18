@@ -21,7 +21,8 @@ public class ProbingFormController {
     private final BaseFormService baseFormService;
     private final ProbingFormService probingFormService;
 
-    public ProbingFormController(BaseFormService baseFormService, ProbingFormService probingFormService) {
+    public ProbingFormController(BaseFormService baseFormService,
+                                 ProbingFormService probingFormService) {
         this.baseFormService = baseFormService;
         this.probingFormService = probingFormService;
     }
@@ -35,8 +36,11 @@ public class ProbingFormController {
         return "asm-forms/stratospheric-baloon-form";
     }
 
-    @PostMapping(value = "/probing-form-save", produces = "text/html;charset=UTF-8")
-    public String saveProbingForm(@Valid @ModelAttribute("form") ProbingForm form, BindingResult bindingResult, Principal principal) {
+    @PostMapping("/probing-form-save")
+    public String saveProbingForm(@Valid @ModelAttribute("form") ProbingForm form,
+                                  BindingResult bindingResult,
+                                  Principal principal) {
+
         if (bindingResult.hasErrors()) {
             return "asm-forms/stratospheric-baloon-form";
         }

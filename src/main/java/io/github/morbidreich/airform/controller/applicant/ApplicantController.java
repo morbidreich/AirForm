@@ -18,13 +18,10 @@ import java.util.List;
 @RequestMapping("/applicant")
 public class ApplicantController {
 
-	RecreationBaloonService recreationBaloonService;
 	BaseFormService baseFormService;
 
-	public ApplicantController(BaseFormService baseFormService,
-							   RecreationBaloonService recreationBaloonService) {
+	public ApplicantController(BaseFormService baseFormService) {
 		this.baseFormService = baseFormService;
-		this.recreationBaloonService = recreationBaloonService;
 	}
 
 	@GetMapping("")
@@ -33,7 +30,7 @@ public class ApplicantController {
 		model.addAttribute("applicationsCount",
 				  baseFormService.countAllByApplicantUsername(authentication.getName()));
 
-		return "applicant-home.html";
+		return "applicant-home";
 	}
 
 	@GetMapping("/applications")
@@ -44,20 +41,5 @@ public class ApplicantController {
 		return "applicant-applications";
 	}
 
-	@GetMapping("/recreation-baloon-form")
-	public String recreationBaloonForm(Model model, Principal principal) {
-		RecreationBaloonForm form = new RecreationBaloonForm();
-		form = (RecreationBaloonForm) baseFormService.prepopulateForm(form, principal.getName());
-		model.addAttribute("form", form);
 
-		return "asm-forms/recreation-baloon-form";
-	}
-
-	@PostMapping("/baloon-form-save")
-	public String saveBaloonForm(@ModelAttribute RecreationBaloonForm form, Principal principal) {
-		form.setApplicantUsername(principal.getName());
-		recreationBaloonService.saveNew(form);
-
-		return "redirect:/applicant";
-	}
 }

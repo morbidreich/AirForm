@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -21,7 +23,15 @@ public class RecreationBaloonForm extends IntermediateForm {
 
     @Enumerated(EnumType.STRING)
     private RecreationBaloonType recreationBaloonType;
+
+    @NotNull
     private String color;
+
+    @NotNull
+    @Min(1)
     private Integer diameter;
+
+    @NotNull
+    @Min(1)
     private Integer baloonCount;
 }
