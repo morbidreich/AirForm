@@ -1,4 +1,4 @@
-package io.github.morbidreich.airform.controller;
+package io.github.morbidreich.airform.controller.applicant;
 
 import io.github.morbidreich.airform.entity.forms.BaseForm;
 import io.github.morbidreich.airform.entity.forms.ProbingForm;
@@ -18,14 +18,11 @@ import java.util.List;
 @RequestMapping("/applicant")
 public class ApplicantController {
 
-	ProbingFormService probingFormService;
 	RecreationBaloonService recreationBaloonService;
 	BaseFormService baseFormService;
 
-	public ApplicantController(ProbingFormService probingFormService,
-							   BaseFormService baseFormService,
+	public ApplicantController(BaseFormService baseFormService,
 							   RecreationBaloonService recreationBaloonService) {
-		this.probingFormService = probingFormService;
 		this.baseFormService = baseFormService;
 		this.recreationBaloonService = recreationBaloonService;
 	}
@@ -45,23 +42,6 @@ public class ApplicantController {
 		model.addAttribute("formList", formList);
 
 		return "applicant-applications";
-	}
-
-	@GetMapping("/probing-form")
-	public String getProbingForm(Model model, Principal principal) {
-		ProbingForm probingForm = new ProbingForm();
-		probingForm = (ProbingForm) baseFormService.prepopulateForm(probingForm, principal.getName());
-		model.addAttribute("form", probingForm);
-
-		return "asm-forms/stratospheric-baloon-form";
-	}
-
-	@PostMapping("/probing-form-save")
-	public String saveProbingForm(@ModelAttribute ProbingForm form, Principal principal) {
-		form.setApplicantUsername(principal.getName());
-		probingFormService.saveNew(form);
-
-		return "redirect:/applicant";
 	}
 
 	@GetMapping("/recreation-baloon-form")
