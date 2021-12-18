@@ -2,7 +2,7 @@ package io.github.morbidreich.airform.entity.enums;
 
 public enum FormStatus {
 	FILED("Złożony"),
-	PROCESSED("Procesowany"),
+	PROCESSING("Procesowany"),
 	FINISHED("Zakończony");
 
 	private final String description;

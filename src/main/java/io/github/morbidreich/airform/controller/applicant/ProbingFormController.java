@@ -5,11 +5,13 @@ import io.github.morbidreich.airform.service.BaseFormService;
 import io.github.morbidreich.airform.service.ProbingFormService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
@@ -33,11 +35,15 @@ public class ProbingFormController {
         return "asm-forms/stratospheric-baloon-form";
     }
 
-    @PostMapping("/probing-form-save")
-    public String saveProbingForm(@ModelAttribute ProbingForm form, Principal principal) {
-        form.setApplicantUsername(principal.getName());
-        probingFormService.saveNew(form);
-
-        return "redirect:/applicant";
+    @PostMapping(value = "/probing-form-save", produces = "text/html;charset=UTF-8")
+    public String saveProbingForm(@Valid @ModelAttribute("form") ProbingForm form, BindingResult bindingResult, Principal principal) {
+        if (bindingResult.hasErrors()) {
+            return "asm-forms/stratospheric-baloon-form";
+        }
+        else {
+            form.setApplicantUsername(principal.getName());
+            probingFormService.saveNew(form);
+            return "redirect:/applicant";
+        }
     }
 }
