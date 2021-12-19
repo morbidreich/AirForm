@@ -13,10 +13,14 @@
 <div class="container">
     <div class="row" style="height: 30px"></div>
     <div class="row">
-        <div class="col-sm-7"></div>
-        <div class="col-sm-1"></div>
+        <div class="col-sm-6">
+            <img th:src="@{/images/pansa-logo.jpg}" height="70px">
+        </div>
+        <div class="col-sm-2">
+            <a href="/">Strona główna</a>
+        </div>
         <div class="col-sm-4">
-            <a th:if="${authentication.isAuthenticated}" th:text="'Wyloguj (' + ${authentication.getName} + ')'" href="/logout">wyloguj</a>
+            <a th:if="${authentication.isAuthenticated}" th:text="'Wyloguj (' + ${authentication.getName} + ')'" th:href="@{/logout}">wyloguj</a>
         </div>
     </div>
     <div class="row" style="height: 30px"></div>

@@ -16,6 +16,7 @@
                  height="70px">
         </div>
         <div class="col-sm-2" style="text-align: right">
+            <a th:if="${isAuth}" th:text="'Panel użytkownika'" th:href="@{/applicant}">Wyloguj się</a>
             <a th:unless="${isAuth}" href="/create-account">Utwórz konto</a>
         </div>
         <div class="col-sm-2">
