@@ -195,8 +195,11 @@
         </div>
 
         <div class="row mb-3">
-            <div class="col-sm-4">
-                <input type="submit" class="btn btn-primary" value="Wyślij formularz"/>
+            <div class="col-sm-4 d-grid gap-2">
+                <input type="submit" class="btn btn-primary btn-block" value="Wyślij formularz"/>
+            </div>
+            <div class="col-sm-4 d-grid gap-2">
+                <a th:href="@{/applicant}" class="btn btn-secondary btn-block">Anuluj</a>
             </div>
         </div>
     </form>
