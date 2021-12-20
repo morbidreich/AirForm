@@ -19,6 +19,8 @@
 
     <form method="post" th:action="@{/applicant/baloon-form-save}" th:object="${form}">
 
+        <input type="hidden" th:field="*{id}">
+
         <div class="row mb-3">
             <label for="name" class="col-sm-2 col-form-label col-form-label-sm">Imię i nazwisko</label>
             <div class="col-sm-6">

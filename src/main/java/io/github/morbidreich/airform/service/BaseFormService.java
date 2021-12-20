@@ -31,6 +31,10 @@ public class BaseFormService {
 		else return false;
 	}
 
+	public Optional<BaseForm> findByIdAndUsername(long id, String username) {
+		return baseFormRepo.findByIdAndApplicantUsername(id, username);
+	}
+
 	public int countAllByApplicantUsername(String applicantUsername) {
 		return baseFormRepo.countAllByApplicantUsername(applicantUsername);
 	}

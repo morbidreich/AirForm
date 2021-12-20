@@ -38,7 +38,7 @@
                         <td th:text="${form.getFormStatus().toString()}">zaakceptowany</td>
                         <td>
                             wyświetl/
-                            edytuj/
+                            <a th:href="|/applicant/applications/edit/${form.id}|">edytuj</a>
                             <a th:href="|/applicant/applications/delete-form/${form.id}|">usuń</a>
                         </td>
 
