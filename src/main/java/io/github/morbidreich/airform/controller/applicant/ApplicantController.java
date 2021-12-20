@@ -34,8 +34,10 @@ public class ApplicantController {
 	}
 
 	@GetMapping("/applications")
-	public String getUserApplications(Principal principal, Model model) {
-		List<BaseForm> formList = baseFormService.getAllUserForms(principal.getName());
+	public String getUserApplications(Authentication authentication, Model model) {
+
+		List<BaseForm> formList = baseFormService.getAllUserForms(authentication.getName());
+		model.addAttribute("authentication", authentication);
 		model.addAttribute("formList", formList);
 
 		return "applicant-applications";
