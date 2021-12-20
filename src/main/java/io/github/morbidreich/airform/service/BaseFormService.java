@@ -14,13 +14,21 @@ import java.util.Optional;
 
 @Service
 public class BaseFormService {
-	private BaseFormRepo baseFormRepo;
+	private final BaseFormRepo baseFormRepo;
+	private final UserRepo userRepo;
 
-	@Autowired
-	private UserRepo userRepo;
-
-	public BaseFormService(BaseFormRepo baseFormRepo) {
+	public BaseFormService(BaseFormRepo baseFormRepo, UserRepo userRepo) {
 		this.baseFormRepo = baseFormRepo;
+		this.userRepo = userRepo;
+	}
+
+	public boolean deleteByIdAndUsername(long id, String username) {
+		Optional<BaseForm> form = baseFormRepo.findByIdAndApplicantUsername(id, username);
+		if (form.isPresent()) {
+			baseFormRepo.delete(form.get());
+			return true;
+		}
+		else return false;
 	}
 
 	public int countAllByApplicantUsername(String applicantUsername) {

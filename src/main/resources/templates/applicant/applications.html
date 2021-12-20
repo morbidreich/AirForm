@@ -36,7 +36,11 @@
                             12.12.2021T08:30
                         </td>
                         <td th:text="${form.getFormStatus().toString()}">zaakceptowany</td>
-                        <td>zobacz/edytuj/usuń</td>
+                        <td>
+                            wyświetl/
+                            edytuj/
+                            <a th:href="|/applicant/applications/delete-form/${form.id}|">usuń</a>
+                        </td>
 
                     </tr>
                 </table>
