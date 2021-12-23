@@ -27,7 +27,7 @@
                         <th>Typ zgłoszenia</th>
                         <th>Data zgłoszenia</th>
                         <th>Status</th>
-                        <th>Akcja (wyświetl/edytuj/usuń)</th>
+                        <th>Akcja (wyświetl*/edytuj*/usuń)</th>
                     </tr>
                     <tr th:each="form, status: ${formList}">
                         <td th:text="${status.count}">1</td>
@@ -47,15 +47,24 @@
             </div>
             <div class="col-sm-2"></div>
         </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8"><i>* - Wniosek można edytować tylko do momentu rozpoczęcia jego procesowania przez
+                pracownika ASM (Status wniosku zmieni się wtedy na 'Procesowany'). Po tym czasie możliwy jest już tylko
+                podgląd wniosku.</i></div>
+            <div class="col-sm-2"></div>
+        </div>
     </div>
-    <b><h4>dodaj mozliwosc edytowania formularza tylko do momentu, zanim zajmie sie nim ktos z asm<br>
-        Sprawdz formStatus. FILED - mozna edytowac, PROCESSING - nie mozna</h4></b>
+<!--    <b><h4>dodaj mozliwosc edytowania formularza tylko do momentu, zanim zajmie sie nim ktos z asm<br>-->
+<!--        Sprawdz formStatus. FILED - mozna edytowac, PROCESSING - nie mozna</h4></b>-->
     <div class="row" style="margin-top: 40px">
+
         <div class="col-sm-8"></div>
         <div class="col-sm-2">
             <a href="/applicant" class="btn btn-secondary" style="width: 100%">Powrót</a>
         </div>
     </div>
+    <div class="row" style="margin-bottom: 40px"></div>
 </div>
 </body>
 </html>
