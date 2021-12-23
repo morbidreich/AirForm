@@ -2,6 +2,7 @@ package io.github.morbidreich.airform.service;
 
 import io.github.morbidreich.airform.entity.User;
 import io.github.morbidreich.airform.entity.UserDetails;
+import io.github.morbidreich.airform.entity.enums.FormStatus;
 import io.github.morbidreich.airform.entity.enums.FormType;
 import io.github.morbidreich.airform.entity.forms.BaseForm;
 import io.github.morbidreich.airform.repository.BaseFormRepo;
@@ -61,5 +62,9 @@ public class BaseFormService {
 			}
 		}
 		return form;
+	}
+
+	public List<BaseForm> findAllByStatus(FormStatus formStatus) {
+		return baseFormRepo.findAllByFormStatus(formStatus);
 	}
 }
