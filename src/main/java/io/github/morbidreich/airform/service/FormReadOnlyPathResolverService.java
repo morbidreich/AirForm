@@ -4,7 +4,7 @@ import io.github.morbidreich.airform.entity.enums.FormType;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FormReadOnlnyPathResolverService implements FormReadOnlyPathResolver {
+public class FormReadOnlyPathResolverService implements FormReadOnlyPathResolver {
 	@Override
 	public String getPath(FormType formType) {
 		switch (formType) {
