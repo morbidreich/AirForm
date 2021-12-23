@@ -14,4 +14,7 @@ public enum FormStatus {
 	public String toString() {
 		return description;
 	}
+
+	public String valueOf() {
+		return description; }
 }

@@ -22,6 +22,10 @@ public class BaseFormService {
 		this.userRepo = userRepo;
 	}
 
+	public Optional<BaseForm> findById(Long id) {
+		return baseFormRepo.findById(id);
+	}
+
 	public boolean deleteByIdAndUsername(long id, String username) {
 		Optional<BaseForm> form = baseFormRepo.findByIdAndApplicantUsername(id, username);
 		if (form.isPresent()) {
