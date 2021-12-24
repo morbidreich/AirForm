@@ -17,10 +17,11 @@
             Liczba złożonych wniosków: <span th:text="${formList.size()}">liczba</span>
         </h3>
     </div>
-    <div class="table-container">
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
+
+
+    <div class="row">
+        <div class="table-container">
+            <div class="col-sm-12">
                 <table class="table table-striped">
                     <tr>
                         <th>Lp</th>
@@ -37,15 +38,17 @@
                         </td>
                         <td th:text="${form.getFormStatus().toString()}">zaakceptowany</td>
                         <td>
-                            <a th:href="|/applicant/applications/display/${form.id}|">wyświetl</a>
-                            <a th:href="|/applicant/applications/edit/${form.id}|">edytuj</a>
-                            <a th:href="|/applicant/applications/delete-form/${form.id}|">usuń</a>
+                            <a th:if="${form.formStatus!=T(io.github.morbidreich.airform.entity.enums.FormStatus).FILED}"
+                               th:href="|/applicant/applications/display/${form.id}|">wyświetl</a>
+                            <a th:if="${form.formStatus==T(io.github.morbidreich.airform.entity.enums.FormStatus).FILED}"
+                               th:href="|/applicant/applications/display/${form.id}|">Edytuj</a>
+                            <a th:if="${form.formStatus==T(io.github.morbidreich.airform.entity.enums.FormStatus).FILED}"
+                               th:href="|/applicant/applications/delete-form/${form.id}|">usuń</a>
                         </td>
 
                     </tr>
                 </table>
             </div>
-            <div class="col-sm-2"></div>
         </div>
         <div class="row">
             <div class="col-sm-2"></div>
@@ -55,10 +58,7 @@
             <div class="col-sm-2"></div>
         </div>
     </div>
-<!--    <b><h4>dodaj mozliwosc edytowania formularza tylko do momentu, zanim zajmie sie nim ktos z asm<br>-->
-<!--        Sprawdz formStatus. FILED - mozna edytowac, PROCESSING - nie mozna</h4></b>-->
     <div class="row" style="margin-top: 40px">
-
         <div class="col-sm-8"></div>
         <div class="col-sm-2">
             <a href="/applicant" class="btn btn-secondary" style="width: 100%">Powrót</a>

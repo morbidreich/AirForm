@@ -70,4 +70,8 @@ public class BaseFormService {
 	public List<BaseForm> findAllByStatusOrderByApplicationDateTimeAsc(FormStatus formStatus) {
 		return baseFormRepo.findAllByFormStatusOrderByApplicationDateTimeAsc(formStatus);
 	}
+
+	public boolean isReadOnly(BaseForm form) {
+		return form.getFormStatus() != FormStatus.FILED;
+	}
 }

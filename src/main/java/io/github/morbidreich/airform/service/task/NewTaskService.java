@@ -16,15 +16,15 @@ public class NewTaskService {
 		this.baseFormrepo = baseFormrepo;
 	}
 
-	public Task createNewTask(long employeeId, long formId) {
-		BaseForm baseForm = baseFormrepo.findById(formId).get();
-		if (baseForm.getFormStatus() != FormStatus.FILED)
-			throw new FormAlreadyProcessedException();
-
-		Task task = new Task();
-		task.setEmployeeId(employeeId);
-		//TODO check for isPresent
-		task.setForm(baseFormrepo.findById(formId).get());
-		return task;
-	}
+//	public Task createNewTask(long employeeId, long formId) {
+//		BaseForm baseForm = baseFormrepo.findById(formId).get();
+//		if (baseForm.getFormStatus() != FormStatus.FILED)
+//			//throw new FormAlreadyProcessedException();
+//
+//		Task task = new Task();
+//		task.setEmployeeId(employeeId);
+//		//TODO check for isPresent
+//		task.setForm(baseFormrepo.findById(formId).get());
+//		return task;
+//	}
 }

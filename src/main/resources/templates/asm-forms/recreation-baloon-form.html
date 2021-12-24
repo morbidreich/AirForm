@@ -24,21 +24,21 @@
         <div class="row mb-3">
             <label for="name" class="col-sm-2 col-form-label col-form-label-sm">Imię i nazwisko</label>
             <div class="col-sm-6">
-                <input th:field="*{name}" type="text" class="form-control form -control-sm" id="name">
+                <input th:field="*{name}" type="text" class="form-control form -control-sm" id="name" th:readonly="${readOnly==true}">
                 <p th:errors="*{name}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
         </div>
         <div class="row mb-3">
             <label for="phone" class="col-sm-2 col-form-label col-form-label-sm">Numer telefonu</label>
             <div class="col-sm-6">
-                <input type="number" th:field="*{phone}" class="form-control form -control-sm" id="phone">
+                <input type="number" th:field="*{phone}" class="form-control form -control-sm" id="phone" th:readonly="${readOnly==true}">
                 <p th:errors="*{phone}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
         </div>
         <div class="row mb-3">
             <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
             <div class="col-sm-6">
-                <input th:field="*{email}" type="email" class="form-control form -control-sm" id="email">
+                <input th:field="*{email}" type="email" class="form-control form -control-sm" id="email" th:readonly="${readOnly==true}">
                 <p th:errors="*{email}" class="form-error">Tu bedzie komunikat z bledem</p>
 
             </div>
@@ -46,7 +46,7 @@
         <div class="row mb-3">
             <label for="startDateTime" class="col-sm-2 col-form-label col-form-label-sm">Data realizacji</label>
             <div class="col-sm-6">
-                <input th:field="*{startDateTime}" type="datetime-local" class="form-control form -control-sm" id="startDateTime">
+                <input th:field="*{startDateTime}" type="datetime-local" class="form-control form -control-sm" id="startDateTime" th:readonly="${readOnly==true}">
                 <p th:errors="*{startDateTime}" class="form-error">Tu bedzie komunikat z bledem</p>
 
             </div>
@@ -54,7 +54,7 @@
         <div class="row mb-3">
             <label for="endDateTime" class="col-sm-2 col-form-label col-form-label-sm">Data zakończenia</label>
             <div class="col-sm-6">
-                <input th:field="*{endDateTime}" type="datetime-local" class="form-control form -control-sm" id="endDateTime">
+                <input th:field="*{endDateTime}" type="datetime-local" class="form-control form -control-sm" id="endDateTime" th:readonly="${readOnly==true}">
                 <p th:errors="*{endDateTime}" class="form-error">Tu bedzie komunikat z bledem</p>
 
             </div>
@@ -63,19 +63,19 @@
         <div class="row mb-3">
             <label for="latitude" class="col-sm-2 col-form-label col-form-label-sm">Długość geograficzna</label>
             <div class="col-sm-1">
-                <input th:field="*{latitudeDegrees}" type="number" class="form-control form -control-sm" id="latitude" placeholder="">
+                <input th:field="*{latitudeDegrees}" type="number" class="form-control form -control-sm" id="latitude" placeholder="" th:readonly="${readOnly==true}">
                 <div id="latdeghelp" class="form-text">Stopnie</div>
                 <p th:errors="*{latitudeDegrees}" class="form-error">Tu bedzie komunikat z bledem</p>
 
             </div>
             <div class="col-sm-1">
-                <input th:field="*{latitudeMinutes}" type="number" class="form-control form -control-sm" id="latMin">
+                <input th:field="*{latitudeMinutes}" type="number" class="form-control form -control-sm" id="latMin" th:readonly="${readOnly==true}">
                 <div id="latminhelp" class="form-text">Minuty</div>
                 <p th:errors="*{latitudeMinutes}" class="form-error">Tu bedzie komunikat z bledem</p>
 
             </div>
             <div class="col-sm-1">
-                <input th:field="*{latitudeSeconds}" type="number" class="form-control form -control-sm" id="latSec">
+                <input th:field="*{latitudeSeconds}" type="number" class="form-control form -control-sm" id="latSec" th:readonly="${readOnly==true}">
                 <div id="latsechelp" class="form-text">Sekundy</div>
                 <p th:errors="*{latitudeSeconds}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
@@ -86,17 +86,17 @@
         <div class="row mb-3">
             <label for="longitude" class="col-sm-2 col-form-label col-form-label-sm">Szerokość geograficzna</label>
             <div class="col-sm-1">
-                <input th:field="*{longitudeDegrees}" type="number" class="form-control form -control-sm" id="longitude" placeholder="">
+                <input th:field="*{longitudeDegrees}" type="number" class="form-control form -control-sm" id="longitude" placeholder="" th:readonly="${readOnly==true}">
                 <div id="londeghelp" class="form-text">Stopnie</div>
                 <p th:errors="*{longitudeDegrees}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
             <div class="col-sm-1">
-                <input th:field="*{longitudeMinutes}" type="number" class="form-control form -control-sm" id="lonMin">
+                <input th:field="*{longitudeMinutes}" type="number" class="form-control form -control-sm" id="lonMin" th:readonly="${readOnly==true}">
                 <div id="lonminhelp" class="form-text">Minuty</div>
                 <p th:errors="*{longitudeMinutes}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
             <div class="col-sm-1">
-                <input th:field="*{longitudeSeconds}" type="number" class="form-control form -control-sm" id="lonSec">
+                <input th:field="*{longitudeSeconds}" type="number" class="form-control form -control-sm" id="lonSec" th:readonly="${readOnly==true}">
                 <div id="lonsechelp" class="form-text">Sekundy</div>
                 <p th:errors="*{longitudeSeconds}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
@@ -108,7 +108,7 @@
         <div class="row mb-3">
             <label for="type" class="col-sm-2 col-form-label col-form-label-sm">Rodzaj balonów</label>
             <div class="col-sm-3">
-                <select id="type" name="recreationBaloonType" class="form-select" aria-label="Default select example">
+                <select id="type" name="recreationBaloonType" class="form-select" aria-label="Default select example"  th:disabled="${readOnly==true}">
                     <option th:each="recreationBaloonType : ${T(io.github.morbidreich.airform.entity.enums.RecreationBaloonType).values()}"
                             th:value="${recreationBaloonType}" th:text="${recreationBaloonType.displayValue()}"></option>
                 </select>
@@ -118,7 +118,7 @@
         <div class="row mb-3">
             <label for="color" class="col-sm-2 col-form-label col-form-label-sm">Kolor balonów</label>
             <div class="col-sm-3">
-                <input th:field="*{color}" type="text" class="form-control form -control-sm" id="color">
+                <input th:field="*{color}" type="text" class="form-control form -control-sm" id="color" th:readonly="${readOnly==true}">
                 <p th:errors="*{color}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
         </div>
@@ -126,7 +126,7 @@
         <div class="row mb-3">
             <label for="diameter" class="col-sm-2 col-form-label col-form-label-sm">Średnica (cm)</label>
             <div class="col-sm-3">
-                <input th:field="*{diameter}" type="number" class="form-control form -control-sm" id="diameter">
+                <input th:field="*{diameter}" type="number" class="form-control form -control-sm" id="diameter" th:readonly="${readOnly==true}">
                 <p th:errors="*{diameter}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
         </div>
@@ -134,7 +134,7 @@
         <div class="row mb-3">
             <label for="baloonCount" class="col-sm-2 col-form-label col-form-label-sm">Ilość (szt)</label>
             <div class="col-sm-3">
-                <input th:field="*{baloonCount}" type="number" class="form-control form -control-sm" id="baloonCount">
+                <input th:field="*{baloonCount}" type="number" class="form-control form -control-sm" id="baloonCount" th:readonly="${readOnly==true}">
                 <p th:errors="*{baloonCount}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
         </div>
@@ -142,7 +142,7 @@
         <div class="row mb-3">
             <label for="ventureName" class="col-sm-2 col-form-label col-form-label-sm">Nazwa przedsięwzięcia</label>
             <div class="col-sm-6">
-                <input th:field="*{ventureName}" type="text" class="form-control form -control-sm" id="ventureName">
+                <input th:field="*{ventureName}" type="text" class="form-control form -control-sm" id="ventureName" th:readonly="${readOnly==true}">
                 <p th:errors="*{ventureName}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
         </div>
@@ -150,7 +150,7 @@
         <div class="row mb-3">
             <label for="ventureOrganiserName" class="col-sm-2 col-form-label col-form-label-sm">Nazwisko wykonawcy</label>
             <div class="col-sm-3">
-                <input th:field="*{ventureOrganiserName}" type="text" class="form-control form -control-sm" id="ventureOrganiserName">
+                <input th:field="*{ventureOrganiserName}" type="text" class="form-control form -control-sm" id="ventureOrganiserName" th:readonly="${readOnly==true}">
                 <p th:errors="*{ventureOrganiserName}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
         </div>
@@ -158,7 +158,7 @@
         <div class="row mb-3">
             <label for="ventureOrganiserPhone" class="col-sm-2 col-form-label col-form-label-sm">Telefon wykonawcy</label>
             <div class="col-sm-3">
-                <input th:field="*{ventureOrganiserPhone}" type="text" class="form-control form -control-sm" id="ventureOrganiserPhone">
+                <input th:field="*{ventureOrganiserPhone}" type="text" class="form-control form -control-sm" id="ventureOrganiserPhone" th:readonly="${readOnly==true}">
                 <p th:errors="*{ventureOrganiserPhone}" class="form-error">Tu bedzie komunikat z bledem</p>
             </div>
         </div>
@@ -166,7 +166,7 @@
         <div class="row mb-3">
             <div class="col-sm-8">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" th:field="*{rodo}" id="rodo">
+                    <input class="form-check-input" type="checkbox" th:field="*{rodo}" id="rodo" th:disabled="${readOnly==true}">
                     <label class="form-check-label" for="rodo">
                         <span style="color: red">(Wymagane)</span> Oświadczam, że zostałem poinformowany o treści
                         obowiązku informacyjnego wynikającym z
@@ -187,10 +187,10 @@
 
         <div class="row mb-3">
             <div class="col-sm-4 d-grid gap-2">
-                <input type="submit" class="btn btn-primary" value="Wyślij formularz"/>
+                <input type="submit" class="btn btn-primary" value="Wyślij formularz"  th:disabled="${readOnly==true}"/>
             </div>
             <div class="col-sm-4 d-grid gap-2">
-                <a th:href="@{/applicant}" class="btn btn-secondary btn-block">Anuluj</a>
+                <a th:href="@{/applicant}" class="btn btn-secondary btn-block" th:text="${readOnly==true?'Powrót':'Anuluj'}">Anuluj</a>
             </div>
         </div>
     </form>

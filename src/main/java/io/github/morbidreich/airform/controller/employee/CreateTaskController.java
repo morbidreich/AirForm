@@ -23,8 +23,8 @@ public class CreateTaskController {
 	@GetMapping("/new-task/{formId}")
 	public String createTask(@PathVariable long formId, Model model, Authentication authentication) {
 
-		Task task = newTaskService.createNewTask(authentication., formId);
-		model.addAttribute("task", task);
+//		Task task = newTaskService.createNewTask(authentication., formId);
+//		model.addAttribute("task", task);
 		return "task";
 	}
 }
