@@ -17,5 +17,6 @@ public interface BaseFormRepo extends CrudRepository<BaseForm, Long> {
 
 	// used by employee
 	public List<BaseForm> findAllByFormStatus(FormStatus formStatus);
+	public List<BaseForm> findAllByFormStatusOrderByApplicationDateTimeAsc(FormStatus formStatus);
 	public List<BaseForm> findAllByFormType(FormType formType);
 }

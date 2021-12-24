@@ -1,11 +1,15 @@
 package io.github.morbidreich.airform.entity.tasks;
 
 import io.github.morbidreich.airform.entity.forms.BaseForm;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
 public class Task {
 	@Id
@@ -18,4 +22,8 @@ public class Task {
 	private LocalDateTime finishTime;
 	@OneToOne
 	private BaseForm form;
+
+	public Task() {
+		startTime = LocalDateTime.now();
+	}
 }

@@ -67,4 +67,7 @@ public class BaseFormService {
 	public List<BaseForm> findAllByStatus(FormStatus formStatus) {
 		return baseFormRepo.findAllByFormStatus(formStatus);
 	}
+	public List<BaseForm> findAllByStatusOrderByApplicationDateTimeAsc(FormStatus formStatus) {
+		return baseFormRepo.findAllByFormStatusOrderByApplicationDateTimeAsc(formStatus);
+	}
 }
