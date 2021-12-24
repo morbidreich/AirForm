@@ -41,7 +41,7 @@
                             <a th:if="${form.formStatus!=T(io.github.morbidreich.airform.entity.enums.FormStatus).FILED}"
                                th:href="|/applicant/applications/display/${form.id}|">wyświetl</a>
                             <a th:if="${form.formStatus==T(io.github.morbidreich.airform.entity.enums.FormStatus).FILED}"
-                               th:href="|/applicant/applications/display/${form.id}|">Edytuj</a>
+                               th:href="|/applicant/applications/display/${form.id}|">edytuj</a>
                             <a th:if="${form.formStatus==T(io.github.morbidreich.airform.entity.enums.FormStatus).FILED}"
                                th:href="|/applicant/applications/delete-form/${form.id}|">usuń</a>
                         </td>

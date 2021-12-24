@@ -27,9 +27,15 @@ public class BaseFormService {
 		return baseFormRepo.findById(id);
 	}
 
+	/**
+	 * Delete form if it hasn't yet been processed by ASM employee
+	 * @param id form Id
+	 * @param username username that filed form
+	 * @return true if form was successfully deleted
+	 */
 	public boolean deleteByIdAndUsername(long id, String username) {
 		Optional<BaseForm> form = baseFormRepo.findByIdAndApplicantUsername(id, username);
-		if (form.isPresent()) {
+		if (form.isPresent() && form.get().getFormStatus() == FormStatus.FILED) {
 			baseFormRepo.delete(form.get());
 			return true;
 		}
