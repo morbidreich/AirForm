@@ -24,7 +24,6 @@
                         <th>Typ zgłoszenia</th>
                         <th>Wnioskodawca</th>
                         <th>Data zgłoszenia</th>
-                        <th>Data wydarzenia</th>
                         <th>Status</th>
                         <th>Akcja (rozpatrz/usuń)</th>
                     </tr>
@@ -37,10 +36,8 @@
                         </td>
                         <td th:text="${form.getFormStatus().toString()}">zaakceptowany</td>
                         <td>
-<!--                            <a th:href="|/applicant/applications/display/${form.id}|">wyświetl</a>-->
-<!--                            <a th:href="|/applicant/applications/edit/${form.id}|">edytuj</a>-->
-<!--                            <a th:href="|/applicant/applications/delete-form/${form.id}|">usuń</a>-->
-                            placeholder
+                            <a th:href="|/employee/new-task/${form.id}|">rozpatrz</a>
+                            <a th:href="|/employee/delete-form/${form.id}|">usuń</a>
                         </td>
 
                     </tr>
