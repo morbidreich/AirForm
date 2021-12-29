@@ -28,7 +28,7 @@ public class DisplayFormController {
 	}
 
 	@GetMapping("display/{id}")
-	public String displayFormReadOnly(@PathVariable long id, Model model) {
+	public String displayForm(@PathVariable long id, Model model) {
 		Optional<BaseForm> form = baseFormService.findById(id);
 
 		if (form.isPresent()) {
