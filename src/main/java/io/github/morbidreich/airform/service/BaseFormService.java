@@ -7,7 +7,6 @@ import io.github.morbidreich.airform.entity.enums.FormType;
 import io.github.morbidreich.airform.entity.forms.BaseForm;
 import io.github.morbidreich.airform.repository.BaseFormRepo;
 import io.github.morbidreich.airform.repository.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
