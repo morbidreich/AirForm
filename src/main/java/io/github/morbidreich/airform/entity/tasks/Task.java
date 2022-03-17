@@ -15,7 +15,7 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private Long employeeId;
+	private String employeeId;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime startTime;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")

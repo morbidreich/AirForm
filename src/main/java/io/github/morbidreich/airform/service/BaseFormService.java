@@ -9,6 +9,7 @@ import io.github.morbidreich.airform.repository.BaseFormRepo;
 import io.github.morbidreich.airform.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,17 @@ public class BaseFormService {
 	public BaseFormService(BaseFormRepo baseFormRepo, UserRepo userRepo) {
 		this.baseFormRepo = baseFormRepo;
 		this.userRepo = userRepo;
+	}
+
+	@Transactional
+	public boolean setFormStatus(Long id, FormStatus formStatus) {
+		Optional<BaseForm> formOptional = findById(id);
+		if (formOptional.isPresent()) {
+			formOptional.get().setFormStatus(formStatus);
+			return true;
+		}
+		else
+			return false;
 	}
 
 	public Optional<BaseForm> findById(Long id) {

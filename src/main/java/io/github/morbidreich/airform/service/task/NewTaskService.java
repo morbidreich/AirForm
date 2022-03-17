@@ -7,6 +7,8 @@ import io.github.morbidreich.airform.repository.BaseFormRepo;
 import io.github.morbidreich.airform.service.BaseFormService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class NewTaskService {
 
@@ -16,15 +18,17 @@ public class NewTaskService {
 		this.baseFormrepo = baseFormrepo;
 	}
 
-//	public Task createNewTask(long employeeId, long formId) {
-//		BaseForm baseForm = baseFormrepo.findById(formId).get();
-//		if (baseForm.getFormStatus() != FormStatus.FILED)
-//			//throw new FormAlreadyProcessedException();
-//
-//		Task task = new Task();
-//		task.setEmployeeId(employeeId);
-//		//TODO check for isPresent
-//		task.setForm(baseFormrepo.findById(formId).get());
-//		return task;
-//	}
+	public Optional<Task> createNewTask(String employeeId, long formId) {
+
+		Optional<BaseForm> formOptional = baseFormrepo.findById(formId);
+		if (!formOptional.isPresent()) {
+			return Optional.empty();
+		}
+		else {
+			Task task = new Task();
+			task.setEmployeeId(employeeId);
+			task.setForm(formOptional.get());
+			return Optional.of(task);
+		}
+	}
 }
