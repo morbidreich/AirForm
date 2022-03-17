@@ -9,11 +9,9 @@ public class FormDisplayPathResolverService implements FormDisplayPathResolver {
 	public String getPath(FormType formType) {
 		switch (formType) {
 			case PROBING -> {return "asm-forms/stratospheric-baloon-form";}
-			case RECREATION_BALOONS -> {return "asm-forms/recreation-baloon-form";}
-//				case EXERCISE_COMPETITION -> {}
-//				case FIREWORKS -> {}
-//				case LASERS_LIGHTS -> {}
-			default -> { return "";	}
+			case RECREATION_BALOONS, FIREWORKS, LASERS_LIGHTS -> {return "asm-forms/recreation-baloon-form";}
+			case EXERCISE_COMPETITION -> {return "asm-forms/exercise-competition-form";}
+			default -> {return "error/404";}
 		}
 	}
 }
