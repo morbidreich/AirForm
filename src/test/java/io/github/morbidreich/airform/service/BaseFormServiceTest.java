@@ -42,7 +42,7 @@ class BaseFormServiceTest {
 	ArgumentCaptor<String> stringArgumentCaptor;
 
 	@Test
-	public void setFormStatus_formFound_statusSetToFiledTest() {
+	public void setFormStatus_formFound_statusSetToFiled() {
 		//given
 		Optional<BaseForm> baseFormOptional = Optional.of(new BaseForm());
 		given(baseFormRepo.findById(DUMMY_FORM_ID)).willReturn(baseFormOptional);
@@ -57,14 +57,14 @@ class BaseFormServiceTest {
 	}
 
 	@Test
-	public void setFormStatus_formNotFound_shouldReturnFalseTest(){
+	public void setFormStatus_formNotFound_shouldReturnFalse(){
 		boolean result = baseFormService.setFormStatus(DUMMY_FORM_ID, FormStatus.FILED);
 		verify(baseFormRepo).findById(DUMMY_FORM_ID);
 		assertFalse(result);
 	}
 
 	@Test
-	public void findById_shouldReturnOkTest() {
+	public void findById_shouldReturnOk() {
 		BaseForm baseForm = new BaseForm();
 		Optional<BaseForm> expectedOptional = Optional.of(baseForm);
 
@@ -73,7 +73,7 @@ class BaseFormServiceTest {
 	}
 
 	@Test
-	public void findById_shouldReturnEmptyOptionalTest() {
+	public void findById_shouldReturnEmptyOptional() {
 		Optional<BaseForm> expectedOptional = Optional.empty();
 
 		when(baseFormRepo.findById(anyLong())).thenReturn(Optional.empty());
@@ -81,7 +81,7 @@ class BaseFormServiceTest {
 	}
 
 	@Test
-	public void prepopulateForm_userNotFound_ShouldReturnUnchangedFormTest() {
+	public void prepopulateForm_userNotFound_ShouldReturnUnchangedForm() {
 		//given
 		BaseForm baseForm = new BaseForm();
 		given(userRepo.findByUsername(DUMMY_USERNAME)).willReturn(Optional.empty());
@@ -97,7 +97,7 @@ class BaseFormServiceTest {
 	}
 
 	@Test
-	public void deleteByIdAndUsername_shouldDeleteTest() {
+	public void deleteByIdAndUsername_shouldDelete() {
 		//given
 		BaseForm baseForm = new BaseForm();
 		baseForm.setFormStatus(FormStatus.FILED);
@@ -112,7 +112,7 @@ class BaseFormServiceTest {
 	}
 
 	@Test
-	public void deleteByIdAndUsername_shouldNotDeleteBecauseFormStatusOtherThanFiledTest() {
+	public void deleteByIdAndUsername_shouldNotDeleteWhenFormStatusOtherThanFiled() {
 		//given
 		BaseForm baseForm = new BaseForm();
 		baseForm.setFormStatus(FormStatus.PROCESSING);
@@ -127,7 +127,7 @@ class BaseFormServiceTest {
 	}
 
 	@Test
-	public void deleteByIdAndUsername_shouldNotDeleteNoFormForUsernameFoundTest() {
+	public void deleteByIdAndUsername_shouldNotDeleteNoFormForUsernameFound() {
 		given(baseFormRepo.findByIdAndApplicantUsername(1L, DUMMY_USERNAME)).willReturn(Optional.empty());
 
 		//when
@@ -139,7 +139,7 @@ class BaseFormServiceTest {
 	}
 
 	@Test
-	public void prepopulateForm_userFoundWithDetails_shouldReturnPrepopulatedFormTest() {
+	public void prepopulateForm_userFoundWithDetails_shouldReturnPrepopulatedForm() {
 		//given
 		BaseForm baseForm = new BaseForm();
 		User userMock = mock(User.class);
@@ -160,7 +160,7 @@ class BaseFormServiceTest {
 	}
 
 	@Test
-	public void prepopulateForm_userFoundWithoutDetails_shouldReturnPrepopulatedFormTest() {
+	public void prepopulateForm_userFoundWithoutDetails_shouldReturnPrepopulatedForm() {
 		//given
 		BaseForm baseForm = new BaseForm();
 		User userMock = mock(User.class);
